@@ -23,22 +23,22 @@ export function PdfViewer({ url, fileName }: PdfViewerProps) {
     a.href = url
     a.download = fileName
     a.click()
-    console.log("[v0] PDF download initiated:", fileName)
+    console.log("PDF download initiated:", fileName)
   }
 
   const handleOpenInNewTab = () => {
     window.open(url, "_blank")
-    console.log("[v0] PDF opened in new tab:", url)
+    console.log("PDF opened in new tab:", url)
   }
 
   const handleIframeLoad = () => {
-    console.log("[v0] PDF iframe loaded successfully")
+    console.log("PDF iframe loaded successfully")
     setIsLoading(false)
     setError(null)
   }
 
   const handleIframeError = () => {
-    console.error("[v0] PDF iframe loading error")
+    console.error("PDF iframe loading error")
     setError("PDF display error. Use the buttons below to open or download.")
     setIsLoading(false)
   }

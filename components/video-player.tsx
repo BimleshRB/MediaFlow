@@ -62,7 +62,7 @@ export function VideoPlayer({ url, fileName, fileObject }: VideoPlayerProps) {
     const video = videoRef.current
     if (!video) return
 
-    console.log("[v0] Video Player Init:", {
+    console.log("Video Player Init:", {
       url,
       fileName,
       fileSize: fileObject.size,
@@ -76,7 +76,7 @@ export function VideoPlayer({ url, fileName, fileObject }: VideoPlayerProps) {
 
     const updateTime = () => setCurrentTime(video.currentTime)
     const updateDuration = () => {
-      console.log("[v0] Video metadata loaded:", {
+      console.log("Video metadata loaded:", {
         duration: video.duration,
         videoWidth: video.videoWidth,
         videoHeight: video.videoHeight,
@@ -87,7 +87,7 @@ export function VideoPlayer({ url, fileName, fileObject }: VideoPlayerProps) {
     }
 
     const handleError = (e: Event) => {
-      console.error("[v0] Video error details:", {
+      console.error("Video error details:", {
         error: video.error,
         errorCode: video.error?.code,
         errorMessage: video.error?.message,
@@ -115,7 +115,7 @@ export function VideoPlayer({ url, fileName, fileObject }: VideoPlayerProps) {
     }
 
     const handleCanPlay = () => {
-      console.log("[v0] Video can play:", {
+      console.log("Video can play:", {
         readyState: video.readyState,
         networkState: video.networkState,
         duration: video.duration,
@@ -125,16 +125,16 @@ export function VideoPlayer({ url, fileName, fileObject }: VideoPlayerProps) {
     }
 
     const handleLoadStart = () => {
-      console.log("[v0] Video load started - streaming from disk")
+      console.log("Video load started - streaming from disk")
       setIsLoading(true)
     }
 
     const handleSuspend = () => {
-      console.log("[v0] Video loading suspended (browser stopped fetching)")
+      console.log("Video loading suspended (browser stopped fetching)")
     }
 
     const handleStalled = () => {
-      console.log("[v0] Video stalled (trying to fetch but failing)")
+      console.log("Video stalled (trying to fetch but failing)")
     }
 
     const handleProgress = () => {
@@ -143,7 +143,7 @@ export function VideoPlayer({ url, fileName, fileObject }: VideoPlayerProps) {
         const duration = video.duration
         if (duration > 0) {
           const percentBuffered = (bufferedEnd / duration) * 100
-          console.log("[v0] Video buffering progress:", percentBuffered.toFixed(1) + "%")
+          console.log("Video buffering progress:", percentBuffered.toFixed(1) + "%")
         }
       }
     }
@@ -175,18 +175,18 @@ export function VideoPlayer({ url, fileName, fileObject }: VideoPlayerProps) {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause()
-        console.log("[v0] Video paused")
+        console.log("Video paused")
         setIsPlaying(false)
       } else {
-        console.log("[v0] Attempting to play video...")
+        console.log("Attempting to play video...")
         videoRef.current
           .play()
           .then(() => {
-            console.log("[v0] Video playing successfully")
+            console.log("Video playing successfully")
             setIsPlaying(true)
           })
           .catch((err) => {
-            console.error("[v0] Play error:", {
+            console.error("Play error:", {
               error: err,
               message: err.message,
               name: err.name,

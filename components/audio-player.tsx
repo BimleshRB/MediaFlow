@@ -53,7 +53,7 @@ export function AudioPlayer({ url, fileName }: AudioPlayerProps) {
     const audio = audioRef.current
     if (!audio) return
 
-    console.log("[v0] Audio Player Init:", {
+    console.log("Audio Player Init:", {
       url,
       fileName,
       mimeType: getMimeType(fileName),
@@ -63,7 +63,7 @@ export function AudioPlayer({ url, fileName }: AudioPlayerProps) {
 
     const updateTime = () => setCurrentTime(audio.currentTime)
     const updateDuration = () => {
-      console.log("[v0] Audio metadata loaded:", {
+      console.log("Audio metadata loaded:", {
         duration: audio.duration,
         readyState: audio.readyState,
       })
@@ -79,7 +79,7 @@ export function AudioPlayer({ url, fileName }: AudioPlayerProps) {
       }
     }
     const handleError = (e: Event) => {
-      console.error("[v0] Audio error details:", {
+      console.error("Audio error details:", {
         error: audio.error,
         errorCode: audio.error?.code,
         errorMessage: audio.error?.message,
@@ -105,12 +105,12 @@ export function AudioPlayer({ url, fileName }: AudioPlayerProps) {
       setError(userMessage)
     }
     const handleCanPlay = () => {
-      console.log("[v0] Audio can play - ready to start")
+      console.log("Audio can play - ready to start")
       setIsLoading(false)
       setError(null)
     }
     const handleLoadStart = () => {
-      console.log("[v0] Audio loading started")
+      console.log("Audio loading started")
       setIsLoading(true)
     }
 
@@ -137,18 +137,18 @@ export function AudioPlayer({ url, fileName }: AudioPlayerProps) {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause()
-        console.log("[v0] Audio paused")
+        console.log("Audio paused")
         setIsPlaying(false)
       } else {
-        console.log("[v0] Attempting to play audio...")
+        console.log("Attempting to play audio...")
         audioRef.current
           .play()
           .then(() => {
-            console.log("[v0] Audio playing successfully")
+            console.log("Audio playing successfully")
             setIsPlaying(true)
           })
           .catch((err) => {
-            console.error("[v0] Play error:", {
+            console.error("Play error:", {
               error: err,
               message: err.message,
               name: err.name,
