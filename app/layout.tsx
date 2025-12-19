@@ -12,8 +12,21 @@ export const metadata: Metadata = {
   title: "MediaHub - Universal Media Player",
   description: "Play videos, audio, view images and PDFs all in one place",
   icons: {
-    icon: "/app-icon.png",
-    apple: "/app-icon.png",
+    icon: [
+      {
+        url: "/apple-icon.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/apple-icon.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: "/apple-icon.png",
   },
 }
 
