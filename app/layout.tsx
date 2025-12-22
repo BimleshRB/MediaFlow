@@ -9,7 +9,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://yourdomain.com'), // Replace with your actual domain
+  metadataBase: new URL('https://media-flow-snowy.vercel.app'),
   title: {
     default: "MediaHub - Universal Media Player | Play Video, Audio, View Images & PDFs Online",
     template: "%s | MediaHub - Universal Media Player"
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourdomain.com", // Replace with your actual domain
+    url: "https://media-flow-snowy.vercel.app",
     siteName: "MediaHub - Universal Media Player",
     title: "MediaHub - Universal Media Player | Play Video, Audio, View Images & PDFs",
     description: "Free online universal media player supporting videos, audio, images, and PDFs. No installation required. Works on any device.",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://yourdomain.com", // Replace with your actual domain
+    canonical: "https://media-flow-snowy.vercel.app/", // Replace with your actual domain
   },
   category: "technology",
   icons: {
@@ -119,7 +119,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="okbiN8eweBV97wCO8ZP9zLkMVeEYDhecxaRQVC48exQ" />
-        <link rel="canonical" href="https://yourdomain.com" />
+        <link rel="canonical" href="https://media-flow-snowy.vercel.app" />
       </head>
       <body className={`font-sans antialiased`}>
         <ThemeProvider>{children}</ThemeProvider>
