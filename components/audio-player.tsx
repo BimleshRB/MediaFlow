@@ -209,7 +209,25 @@ export function AudioPlayer({ url, fileName }: AudioPlayerProps) {
         Your browser does not support the audio element.
       </audio>
 
-      <Card className="p-10 space-y-8 border-border/50 bg-card/50 backdrop-blur-sm">
+      <Card
+        className="p-10 space-y-8 border-border/50 bg-card/50 backdrop-blur-sm"
+        tabIndex={0}
+        onKeyDownCapture={(e) => {
+          if (e.code === "Space" || e.key === " " || (e as any).key === "Spacebar") {
+            e.preventDefault()
+            e.stopPropagation()
+            togglePlay()
+          }
+        }}
+        onKeyUpCapture={(e) => {
+          if (e.code === "Space" || e.key === " " || (e as any).key === "Spacebar") {
+            e.preventDefault()
+            e.stopPropagation()
+          }
+        }}
+        aria-label="Audio player"
+        aria-keyshortcuts="Space"
+      >
         {isLoading && !error && (
           <div className="bg-muted/50 border border-border rounded-lg p-4">
             <div className="flex items-center gap-3">

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FileUploader } from "@/components/file-uploader"
 import { MediaPlayer } from "@/components/media-player"
 import { Moon, Sun, Linkedin, Github, Globe } from "lucide-react"
@@ -15,6 +15,11 @@ export default function HomePage() {
     file: File
   } | null>(null)
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <div className="min-h-screen bg-background transition-colors duration-300 flex flex-col">
@@ -39,7 +44,10 @@ export default function HomePage() {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="rounded-full hover:bg-accent"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {/* Avoid hydration mismatch: render icon only after mount */}
+              {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : (
+                <span className="block h-4 w-4" aria-hidden="true" />
+              )}
             </Button>
           </div>
         </div>

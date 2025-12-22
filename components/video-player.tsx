@@ -273,12 +273,34 @@ export function VideoPlayer({ url, fileName, fileObject }: VideoPlayerProps) {
     a.click()
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // Toggle play/pause on Space and prevent page scroll
+    if (e.code === "Space" || e.key === " " || (e as any).key === "Spacebar") {
+      e.preventDefault()
+      e.stopPropagation()
+      togglePlay()
+    }
+  }
+
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // Prevent default button activation on keyup for Space
+    if (e.code === "Space" || e.key === " " || (e as any).key === "Spacebar") {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+  }
+
   return (
     <Card
       ref={containerRef}
       className="overflow-hidden bg-black border-border/30 shadow-2xl shadow-black/20"
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(isPlaying ? false : true)}
+      tabIndex={0}
+      onKeyDownCapture={handleKeyDown}
+      onKeyUpCapture={handleKeyUp}
+      aria-label="Video player"
+      aria-keyshortcuts="Space"
     >
       <div className="relative aspect-video bg-black">
         {isLoading && !error && (
